@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let isScratching = false;
     let scratchProgress = 0;
-    const scratchThreshold = 0.7; // 70% of the card needs to be scratched
+    const scratchThreshold = 0.001; // 70% of the card needs to be scratched
     
     // Initialize canvas for scratch effect
     const canvas = document.createElement('canvas');
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function startFlyingStarsAnimation() {
         let starCount = 0;
-        const maxStars = 20; // Reduced number since stars are bigger
+        const maxStars = 30; // Increased from 20 to 30
         
         function createStar() {
             if (starCount >= maxStars) return;
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
             star.style.left = startX + 'px';
             
             // Random size variation (bigger range)
-            const size = Math.random() * 40 + 30; // 30px to 70px
+            const size = Math.random() * 100 + 200; // 200px to 300px
             star.style.width = size + 'px';
             star.style.height = size + 'px';
             
@@ -283,12 +283,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (starCount < maxStars) {
                 createStar();
             }
-        }, 300); // Slightly slower creation rate
+        }, 200); // Faster creation rate
         
-        // Stop creating stars after 10 seconds
+        // Stop creating stars after 15 seconds
         setTimeout(() => {
             clearInterval(createInterval);
-        }, 10000);
+        }, 15000);
     }
     
     function createConfetti() {
@@ -309,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function createStars() {
         const numStars = 12; // Reduced number of stars since they're bigger
+        
         for (let i = 0; i < numStars; i++) {
             const star = document.createElement('div');
             star.className = 'star';

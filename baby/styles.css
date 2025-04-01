@@ -49,13 +49,13 @@ body {
 }
 
 .tom {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23A0522D"/><circle cx="35" cy="40" r="10" fill="white"/><circle cx="65" cy="40" r="10" fill="white"/><circle cx="35" cy="40" r="5" fill="black"/><circle cx="65" cy="40" r="5" fill="black"/><path d="M 30 60 Q 50 70 70 60" stroke="white" fill="none" stroke-width="3"/></svg>');
+    background-image: url('https://i.pinimg.com/originals/d3/c6/8a/d3c68aeb6f9ead3e57f80f12d12304b8.gif');
     left: 20%;
     animation-delay: 0.5s;
 }
 
 .jerry {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23DAA520"/><circle cx="35" cy="40" r="8" fill="white"/><circle cx="65" cy="40" r="8" fill="white"/><circle cx="35" cy="40" r="4" fill="black"/><circle cx="65" cy="40" r="4" fill="black"/><path d="M 30 60 Q 50 70 70 60" stroke="white" fill="none" stroke-width="2"/></svg>');
+    background-image: url('https://i.pinimg.com/originals/d3/c6/8a/d3c68aeb6f9ead3e57f80f12d12304b8.gif');
     right: 20%;
     animation-delay: 0s;
 }
@@ -452,10 +452,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
-    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-image: url('https://i.pinimg.com/originals/d3/c6/8a/d3c68aeb6f9ead3e57f80f12d12304b8.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     opacity: 0.8;
 }
 
@@ -544,8 +546,8 @@ body {
 
 .flying-star {
     position: fixed;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     background: linear-gradient(45deg, #FFD700, #FFA500);
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     animation: flyStar 6s ease-in-out infinite;
