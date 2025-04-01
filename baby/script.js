@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let isScratching = false;
     let scratchProgress = 0;
-    const scratchThreshold = 0.01; // 70% of the card needs to be scratched
+    const scratchThreshold = 0.7; // 70% of the card needs to be scratched
     
     // Initialize canvas for scratch effect
     const canvas = document.createElement('canvas');
