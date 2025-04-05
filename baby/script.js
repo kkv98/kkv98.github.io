@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set timer for April 5th, 2025, 1:12 PM IST
 
     var endTime;
-    if (Date.now() < new Date('2025-04-18T05:30:00Z')){
+    if (Date.now() > new Date('2025-04-18T05:30:00Z')){
         endTime = Date.now() + 11000;
     }else{
         endTime = new Date('2025-04-18T05:30:00Z'); // 18th April 2025, 11:00 AM IST
