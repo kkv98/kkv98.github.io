@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const jerry = document.querySelector('.jerry');
     
     // You can change this to the actual baby name
-    const babyName = "Tom";
+    const babyName = "K.TANVIKAA";
+    const tamilname = "K.தன்விகா";
     
     let isScratching = false;
     let scratchProgress = 0;
@@ -139,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 scratchProgress = scratchedPixels / totalPixels;
                 
                 if (scratchProgress >= scratchThreshold && !scratchOverlay.classList.contains('scratched')) {
-                    revealName(babyName);
+                    revealName(babyName, tamilname);
                     scratchOverlay.classList.add('scratched');
                 }
             }
@@ -180,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     initScratchCard();
     
-    function revealName(name) {
+    function revealName(name, tamilname) {
         // Show the name container with animation
         nameContainer.classList.add('visible');
         
@@ -195,6 +196,22 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Show the full name immediately
         showFullName(name);
+        showFullName(tamilname);
+        
+        // Animate the instructions text
+        const instructions = document.querySelector('.scratch-instructions');
+        if (instructions) {
+            // Remove any existing animation class
+            instructions.classList.remove('animate');
+            // Force a reflow
+            void instructions.offsetWidth;
+            // Add the animation class
+            instructions.classList.add('animate');
+            // Remove the animation class after it completes
+            setTimeout(() => {
+                instructions.classList.remove('animate');
+            }, 500);
+        }
         
         // Celebrate after a short delay
         setTimeout(() => {
@@ -207,14 +224,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const fullNameContainer = document.createElement('div');
         fullNameContainer.className = 'full-name-container';
         
-        // Create spans for each letter with animation delay
-        name.split('').forEach((char, index) => {
-            const letterSpan = document.createElement('span');
-            letterSpan.className = 'full-name-letter';
-            letterSpan.textContent = char;
-            letterSpan.style.animationDelay = `${index * 0.1}s`;
-            fullNameContainer.appendChild(letterSpan);
-        });
+        // Create a single span for the entire name
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'full-name-letter';
+        nameSpan.textContent = name;
+        nameSpan.style.animationDelay = '0.1s';
+        
+        // Add the name span to the container
+        fullNameContainer.appendChild(nameSpan);
         
         // Add the full name container to the name container
         nameContainer.appendChild(fullNameContainer);
@@ -340,4 +357,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     addViewportMeta();
+
+    function createSparkles() {
+        const numSparkles = 50;
+        for (let i = 0; i < numSparkles; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(sparkle);
+        }
+    }
+
+    // Call createSparkles when the page loads
+    createSparkles();
+
+    function createUnicorns() {
+        const numUnicorns = 8;
+        for (let i = 0; i < numUnicorns; i++) {
+            const unicorn = document.createElement('div');
+            unicorn.className = 'unicorn';
+            
+            // Position unicorns around the edges of the screen
+            if (i < 2) {
+                // Top
+                unicorn.style.top = '20px';
+                unicorn.style.left = `${20 + (i * 30)}%`;
+            } else if (i < 4) {
+                // Right
+                unicorn.style.right = '20px';
+                unicorn.style.top = `${20 + ((i-2) * 30)}%`;
+            } else if (i < 6) {
+                // Bottom
+                unicorn.style.bottom = '20px';
+                unicorn.style.left = `${20 + ((i-4) * 30)}%`;
+            } else {
+                // Left
+                unicorn.style.left = '20px';
+                unicorn.style.top = `${20 + ((i-6) * 30)}%`;
+            }
+            
+            // Add random animation delay
+            unicorn.style.animationDelay = `${Math.random() * 2}s`;
+            
+            document.body.appendChild(unicorn);
+        }
+    }
+
+    // Call createUnicorns when the page loads
+    createUnicorns();
 }); 
