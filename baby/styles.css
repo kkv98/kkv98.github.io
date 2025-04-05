@@ -170,9 +170,10 @@ body::before {
     background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 2;
     transform: scale(0.95);
     opacity: 0;
+    visibility: hidden;
     transition: all 0.5s ease;
     overflow: visible;
     padding: 20px;
@@ -182,6 +183,8 @@ body::before {
 .name-container.visible {
     transform: scale(1);
     opacity: 1;
+    visibility: visible;
+    display: flex;
 }
 
 .letter {
@@ -676,24 +679,12 @@ body::before {
 
 .full-name-container {
     position: relative;
-    width: 100%;
     display: flex;
     justify-content: center;
-    gap: 2px;
-    margin-top: 0;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-
-.tamil-name-container {
-    position: relative;
+    align-items: center;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 2px;
-    margin-top: 0;
-    padding: 0 20px;
-    box-sizing: border-box;
+    height: auto;
+    margin: 10px 0;
 }
 
 .full-name-letter {
@@ -705,42 +696,22 @@ body::before {
     background-clip: text;
     color: transparent;
     opacity: 0;
-    transform: translateY(20px) scale(0.8);
-    animation: letterPop 0.5s ease forwards;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
     display: inline-block;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     line-height: 1.2;
 }
 
-.tamil-name-letter {
-    font-family: 'Comic Neue', cursive;
-    font-size: 3rem;
-    font-weight: 600;
-    background: linear-gradient(45deg, #FF69B4, #FF1493, #FF69B4);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    opacity: 0;
-    transform: translateY(20px) scale(0.8);
-    animation: letterPop 0.5s ease forwards;
-    display: inline-block;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    letter-spacing: 1px;
-    line-height: 1.2;
-}
-
-@keyframes letterPop {
-    0% {
+@keyframes fadeInUp {
+    from {
         opacity: 0;
-        transform: translateY(20px) scale(0.8);
+        transform: translateY(20px);
     }
-    50% {
-        transform: translateY(-10px) scale(1.1);
-    }
-    100% {
+    to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
 }
 

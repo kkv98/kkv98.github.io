@@ -267,6 +267,19 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Add the full name container to the name container
         nameContainer.appendChild(fullNameContainer);
+        
+        // Ensure the name container is visible
+        nameContainer.style.display = 'flex';
+        nameContainer.style.opacity = '1';
+        nameContainer.style.visibility = 'visible';
+        nameContainer.style.position = 'absolute';
+        nameContainer.style.zIndex = '2';
+        
+        // Force a reflow to ensure animations work
+        void nameContainer.offsetWidth;
+        
+        // Add the visible class
+        nameContainer.classList.add('visible');
     }
     
     function celebrate() {
