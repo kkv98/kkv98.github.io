@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Set timer for April 5th, 2025, 1:12 PM IST
     // const endTime = new Date('2025-04-18T05:00:00Z'); // 18th April 2025, 10:30 AM IST
-    const endTime = Date.now() + 10000;
+    const endTime = Date.now() + 11000;
     
     // Create and show countdown
     const countdownElement = document.createElement('div');
