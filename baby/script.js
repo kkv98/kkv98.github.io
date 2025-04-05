@@ -8,6 +8,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const tom = document.querySelector('.tom');
     const jerry = document.querySelector('.jerry');
     
+    // Hide scratch card initially
+    scratchCard.style.display = 'none';
+    
+    // Set timer for April 5th, 2025, 1:12 PM IST
+    // const endTime = new Date('2025-04-18T05:00:00Z'); // 18th April 2025, 10:30 AM IST
+    const endTime = Date.now() + 10000;
+    
+    // Create and show countdown
+    const countdownElement = document.createElement('div');
+    countdownElement.className = 'countdown';
+    document.body.appendChild(countdownElement);
+    
+    function updateCountdown() {
+        const now = new Date();
+        const timeLeft = endTime - now;
+        
+        if (timeLeft <= 0) {
+            countdownElement.remove();
+            scratchCard.style.display = 'block';
+            // Initialize scratch card after timer completes
+            initScratchCard();
+            return;
+        }
+        
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        
+        countdownElement.textContent = `Countdown To Reveal The Name ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        requestAnimationFrame(updateCountdown);
+    }
+    
     // You can change this to the actual baby name
     const babyName = "K.TANVIKAA";
     const tamilname = "K.தன்விகா";
@@ -25,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     canvas.style.zIndex = '1';
-    scratchOverlay.appendChild(canvas);
     
     function resizeCanvas() {
         const rect = scratchOverlay.getBoundingClientRect();
@@ -34,9 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = '#FF69B4';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
-    
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
     
     // Add playful animations to Tom and Jerry
     function animateCharacters() {
@@ -70,6 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let lastTime = 0;
         const BRUSH_SIZE = window.innerWidth <= 768 ? 25 : 30;
         const MIN_DISTANCE = window.innerWidth <= 768 ? 3 : 5;
+        
+        // Add canvas to scratch overlay
+        scratchOverlay.appendChild(canvas);
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
         
         function getPoint(e) {
             const rect = canvas.getBoundingClientRect();
@@ -178,8 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
         canvas.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
     }
-    
-    initScratchCard();
     
     function revealName(name, tamilname) {
         // Show the name container with animation
@@ -407,4 +439,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Call createUnicorns when the page loads
     createUnicorns();
+
+    updateCountdown();
 }); 
