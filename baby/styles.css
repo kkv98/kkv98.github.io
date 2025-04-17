@@ -689,7 +689,7 @@ body::before {
 
 .full-name-letter {
     font-family: 'Comic Neue', cursive;
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 600;
     background: linear-gradient(45deg, #FF69B4, #FF1493, #FF69B4);
     -webkit-background-clip: text;
