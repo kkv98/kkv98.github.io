@@ -289,6 +289,13 @@ a {
   flex-direction: column;
 }
 
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -299,9 +306,14 @@ a {
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
   width: fit-content;
   border: 1px solid rgba(45, 106, 79, 0.15);
+}
+
+.hero-badge.badge-accent {
+  background: rgba(212, 163, 115, 0.1);
+  color: var(--primary);
+  border-color: rgba(212, 163, 115, 0.25);
 }
 
 .hero-badge svg {
@@ -1437,9 +1449,13 @@ textarea.form-control {
     gap: 3rem;
   }
   
-  .hero-badge, .hero-text {
+  .hero-badges, .hero-text {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .hero-badges {
+    justify-content: center;
   }
   
   .hero-btns {
