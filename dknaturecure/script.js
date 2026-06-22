@@ -161,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Extract form values
       const name = document.getElementById('booking-name').value.trim();
       const phone = document.getElementById('booking-phone').value.trim();
-      const treatment = document.getElementById('booking-treatment').value;
       const condition = document.getElementById('booking-condition').value;
       const userMessage = document.getElementById('booking-message').value.trim();
       
@@ -170,9 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
       messageText += `*Name:* ${name}\n`;
       messageText += `*Mobile:* ${phone}\n`;
       
-      if (treatment !== 'Not Specified') {
-        messageText += `*Preferred Treatment:* ${treatment}\n`;
-      }
       if (condition !== 'Not Specified') {
         messageText += `*Clinical Specialization:* ${condition}\n`;
       }
