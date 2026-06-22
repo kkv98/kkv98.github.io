@@ -188,11 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.style.background = '#25d366';
       submitBtn.style.borderColor = '#25d366';
       
-      // Open WhatsApp immediately to prevent popup blockers
-      window.open(whatsappUrl, '_blank', 'noopener');
-      
-      // Reset the form and restore button styling after a short delay
+      // Open WhatsApp after a very short organic delay
       setTimeout(() => {
+        window.open(whatsappUrl, '_blank', 'noopener');
+        
+        // Reset the form and restore button
         consultationForm.reset();
         submitBtn.innerHTML = originalBtnHtml;
         submitBtn.style.background = '';
