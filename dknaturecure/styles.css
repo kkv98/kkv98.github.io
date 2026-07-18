@@ -2162,3 +2162,392 @@ textarea.form-control {
     padding: 1.8rem;
   }
 }
+
+/* ==========================================================================
+   WORKSHOPS LISTING & DETAILS STYLES
+   ========================================================================== */
+.workshops-hero {
+  padding: 8rem 2rem 4rem 2rem;
+  background: radial-gradient(circle at 10% 20%, rgba(45, 106, 79, 0.05) 0%, rgba(244, 249, 245, 1) 70%);
+  text-align: center;
+}
+
+.workshops-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.workshops-hero p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.workshops-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.workshops-section-title {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.workshops-section-title.completed-title {
+  margin-top: 5rem;
+  color: var(--text-muted);
+}
+
+.badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(45, 106, 79, 0.1);
+  color: var(--primary-light);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badge-live::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #25d366;
+  border-radius: 50%;
+  animation: pulse-live 1.8s infinite;
+}
+
+@keyframes pulse-live {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.badge-completed {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(78, 90, 82, 0.1);
+  color: var(--text-muted);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: fit-content;
+}
+
+.workshops-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+
+/* Workshops Active Featured Card */
+.workshop-featured-card {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  background: var(--bg-white);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(45, 106, 79, 0.08);
+  margin-bottom: 2rem;
+  transition: var(--transition-smooth);
+}
+
+.workshop-featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(45, 106, 79, 0.15);
+}
+
+.workshop-featured-details-col {
+  padding: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: radial-gradient(circle at 100% 100%, rgba(45, 106, 79, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.workshop-featured-meta-col {
+  padding: 3.5rem;
+  background: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid rgba(45, 106, 79, 0.05);
+}
+
+.workshop-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.workshop-info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.workshop-info-item svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Completed Card Styling */
+.workshop-completed-card {
+  background: var(--bg-white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(45, 106, 79, 0.04);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  opacity: 0.85;
+  transition: var(--transition-smooth);
+}
+
+.workshop-completed-card:hover {
+  opacity: 1;
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.workshop-completed-card h3 {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-muted);
+}
+
+.workshop-completed-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+/* Workshops Detail Page */
+.workshop-detail-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.workshop-summary-card {
+  background: var(--bg-white);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(45, 106, 79, 0.06);
+  position: sticky;
+  top: 100px;
+}
+
+.workshop-summary-title {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1.8rem;
+  color: var(--primary-dark);
+  text-align: center;
+  border-bottom: 1px solid rgba(45, 106, 79, 0.08);
+  padding-bottom: 1rem;
+}
+
+.workshop-summary-card .btn-whatsapp {
+  background: #25d366;
+  color: var(--text-light);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.2);
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.8rem;
+}
+
+.workshop-summary-card .btn-whatsapp:hover {
+  background: #20ba5a;
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.3);
+}
+
+.workshop-audience-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(45, 106, 79, 0.08);
+}
+
+.workshop-audience-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+}
+
+.workshop-audience-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.workshop-audience-list li {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.workshop-audience-list li svg {
+  color: var(--primary-light);
+  flex-shrink: 0;
+}
+
+.workshop-detail-content {
+  font-size: 1.1rem;
+  line-height: 1.85;
+}
+
+.workshop-detail-content p {
+  margin-bottom: 2rem;
+  color: var(--text-main);
+}
+
+.workshop-detail-content h2 {
+  font-size: 2.1rem;
+  margin: 3.5rem 0 1.5rem 0;
+  color: var(--primary-dark);
+}
+
+/* Pillars grid in details page */
+.workshop-pillars-wrapper {
+  background: var(--bg-white);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid rgba(45, 106, 79, 0.06);
+  box-shadow: var(--shadow-md);
+  margin: 3.5rem 0;
+}
+
+.workshop-pillars-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.workshop-pillar-card {
+  background: var(--bg-light);
+  border-radius: 16px;
+  padding: 1.8rem;
+  border-left: 5px solid var(--accent);
+  transition: var(--transition-bounce);
+}
+
+.workshop-pillar-card:hover {
+  transform: translateX(5px);
+  background: var(--bg-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.workshop-pillar-card h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.workshop-pillar-card h4 span {
+  font-size: 1rem;
+  background: rgba(212, 163, 115, 0.15);
+  color: var(--primary-light);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.workshop-pillar-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   RESPONSIVE OVERRIDES FOR WORKSHOPS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .workshop-featured-card {
+    grid-template-columns: 1fr;
+  }
+  .workshop-featured-meta-col {
+    border-left: none;
+    border-top: 1px solid rgba(45, 106, 79, 0.05);
+    padding: 2.5rem 2rem;
+  }
+  .workshop-featured-details-col {
+    padding: 2.5rem 2rem;
+  }
+  .workshop-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .workshop-summary-card {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .workshops-hero {
+    padding: 7rem 1.5rem 3rem 1.5rem;
+  }
+  .workshops-hero h1 {
+    font-size: 2.4rem;
+  }
+  .workshops-container {
+    padding: 2.5rem 1.5rem;
+  }
+  .workshops-section-title {
+    font-size: 1.8rem;
+  }
+  .workshop-pillars-wrapper {
+    padding: 1.8rem;
+  }
+  .workshop-pillar-card {
+    padding: 1.5rem;
+  }
+}
+
